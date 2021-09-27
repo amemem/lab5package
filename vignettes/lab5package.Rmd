@@ -1,0 +1,48 @@
+---
+title: "2014 Swedish election: county results"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{2014 Swedish election: county results}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>"
+)
+```
+
+```{r setup}
+library(lab5package)
+```
+
+# Description
+This package contains a reference class that calls the Valmyndigheten API, extracts all the county votes and calculates the percentage of votes for each political party.
+
+For a list of all counties, refer to the `val2014` documentation.
+
+# Examples
+The percentage of votes for all parties in a given county:
+```{r}
+val = val2014()
+print(val$county("Blekinge"))
+```
+
+A barplot of the above:
+```{r, fig.width=7, fig.height=6}
+val = val2014()
+county = val$county("Blekinge")
+bp = barplot(
+  county,
+  main = "Blekinge",
+  xlab = "Political party",
+  ylab = "Percent",
+  ylim = c(0,50),
+  col = c("#66BEE6", "#63A91D", "#3399FF", "#1B5CB1", "#FF0000",
+          "#C40000", "#008000", "#4E83A3", "#cd0067", "grey")
+)
+axis(2, seq(0,50,5))
+text(bp, 0, round(county,2), pos = 3)
+```
