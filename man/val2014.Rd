@@ -13,19 +13,19 @@ A Reference Class to calculate the 2014 Swedish election results for all countie
 \section{Fields}{
 
 \describe{
-\item{\code{Blekinge}}{Blekinge County}
+\item{\code{Blekinge}}{Blekinge county}
 
-\item{\code{Dalarna}}{Dalarna County}
+\item{\code{Dalarna}}{Dalarna county}
 
 \item{\code{Gotland}}{Gotland county}
 
-\item{\code{Gavleborg}}{Gävleborg county}
+\item{\code{Gavleborg}}{Gavleborg county}
 
 \item{\code{Halland}}{Halland county}
 
-\item{\code{Jamtland}}{Jämtland county}
+\item{\code{Jamtland}}{Jamtland county}
 
-\item{\code{Jonkoping}}{Jönköping county}
+\item{\code{Jonkoping}}{Jonkoping county}
 
 \item{\code{Kalmar}}{Kalmar county}
 
@@ -33,27 +33,27 @@ A Reference Class to calculate the 2014 Swedish election results for all countie
 
 \item{\code{Norrbotten}}{Norrbotten county}
 
-\item{\code{Skane}}{Skåne county}
+\item{\code{Skane}}{Skane county}
 
 \item{\code{Stockholm}}{Stockholm county}
 
-\item{\code{Sodermanland}}{Södermanland county}
+\item{\code{Sodermanland}}{Sodermanland county}
 
 \item{\code{Uppsala}}{Uppsala county}
 
-\item{\code{Varmland}}{Värmland county}
+\item{\code{Varmland}}{Varmland county}
 
-\item{\code{Vasterbotten}}{Västerbotten county}
+\item{\code{Vasterbotten}}{Vasterbotten county}
 
-\item{\code{Vasternorrland}}{Västernorrland county}
+\item{\code{Vasternorrland}}{Vasternorrland county}
 
-\item{\code{Vastmanland}}{Västmanland county}
+\item{\code{Vastmanland}}{Vastmanland county}
 
-\item{\code{vastergotland}}{Västra Götaland county}
+\item{\code{vastergotland}}{Vastra Gotaland county}
 
-\item{\code{Orebro}}{Örebro county}
+\item{\code{Orebro}}{Orebro county}
 
-\item{\code{Ostergotland}}{Östergötland county}
+\item{\code{Ostergotland}}{Ostergotland county}
 }}
 
 \section{Methods}{
@@ -66,5 +66,5 @@ A Reference Class to calculate the 2014 Swedish election results for all countie
 
 \examples{
 val = val2014()
-print(val$get_county("Blekinge"))
+print(val$county("Blekinge"))
 }

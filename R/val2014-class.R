@@ -2,27 +2,27 @@
 #'
 #' @description A Reference Class to calculate the 2014 Swedish election results for all counties. It calls the Valmyndigheten API, reads the semi-colon separated values file, extracts all the votes for each party in every municipality, and calculates the percentage of votes for each political party in every county. These results are stored in the respective county name field.
 #'
-#' @field Blekinge Blekinge County
-#' @field Dalarna Dalarna County
+#' @field Blekinge Blekinge county
+#' @field Dalarna Dalarna county
 #' @field Gotland Gotland county
-#' @field Gavleborg Gävleborg county
+#' @field Gavleborg Gavleborg county
 #' @field Halland Halland county
-#' @field Jamtland Jämtland county
-#' @field Jonkoping Jönköping county
+#' @field Jamtland Jamtland county
+#' @field Jonkoping Jonkoping county
 #' @field Kalmar Kalmar county
 #' @field Kronoberg Kronoberg county
 #' @field Norrbotten Norrbotten county
-#' @field Skane Skåne county
+#' @field Skane Skane county
 #' @field Stockholm Stockholm county
-#' @field Sodermanland Södermanland county
+#' @field Sodermanland Sodermanland county
 #' @field Uppsala Uppsala county
-#' @field Varmland Värmland county
-#' @field Vasterbotten Västerbotten county
-#' @field Vasternorrland Västernorrland county
-#' @field Vastmanland Västmanland county
-#' @field vastergotland Västra Götaland county
-#' @field Orebro Örebro county
-#' @field Ostergotland Östergötland county
+#' @field Varmland Varmland county
+#' @field Vasterbotten Vasterbotten county
+#' @field Vasternorrland Vasternorrland county
+#' @field Vastmanland Vastmanland county
+#' @field vastergotland Vastra Gotaland county
+#' @field Orebro Orebro county
+#' @field Ostergotland Ostergotland county
 #'
 #' @return A \code{val2014} class generator object.
 #' @export val2014
@@ -34,6 +34,7 @@
 val2014 = setRefClass(
   "val2014",
   fields = list(
+    County = "vector",
     Blekinge = "vector",
     Dalarna = "vector",
     Gotland = "vector",
@@ -66,7 +67,7 @@ val2014 = setRefClass(
         colnames(val) == c(
           "LAN",
           "KOM",
-          "LÄN",
+          "L\u00C4N",
           "KOMMUN",
           "M.tal",
           "M.proc",
@@ -122,6 +123,7 @@ val2014 = setRefClass(
         "Orebro",
         "Ostergotland"
       )
+      .self$County = names(lan)
       for (i in lan) {
         tmp_df = val[val$LAN == i,]
         votes = sum(tmp_df$Rostande)
@@ -146,6 +148,7 @@ val2014 = setRefClass(
     },
     county = function(county) {
       "Returns a named vector with percent values of all political parties for a given county."
+      stopifnot(is.character(county), county %in% County)
       return(.self$field(county))
     }
   )
