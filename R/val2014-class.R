@@ -77,6 +77,13 @@ val2014 = setRefClass(
           "FI.tal",
           "OVR.tal") %in% colnames(val)
       )
+      val = subset(
+        val,
+        select = c(
+          "LAN", "M.tal", "C.tal", "FP.tal", "KD.tal", "S.tal", "V.tal",
+          "MP.tal", "SD.tal", "FI.tal", "OVR.tal", "Rostande"
+        )
+      )
       lan = unique(val$LAN)
       names(lan) = c(
         "Blekinge",
