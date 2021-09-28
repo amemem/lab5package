@@ -60,6 +60,7 @@ val2014 = setRefClass(
   methods = list(
     initialize = function() {
       "Calls the Valmyndigheten API to get the 2014 election results of all municipality, then calculating all the election results for every county and storing them in this object."
+      Sys.setlocale("LC_ALL", "C")
       val = read.csv2("https://data.val.se/val/val2014/statistik/2014_riksdagsval_per_kommun.skv", encoding = "UTF-8")
       stopifnot(
         length(val) == 32,
